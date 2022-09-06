@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="./processing.js"></script>
+<body>
+<script type="application/processing">
+int numFrames = 5;  // The number of frames in the animation
+int frame = 0;
+PImage[] images = new PImage[numFrames];
+    
+void setup()
+{
+  size(200, 200);
+  frameRate(8);
+  images[0]  = loadImage("./data/0.png");
+  images[1]  = loadImage("./data/1.png"); 
+  images[2]  = loadImage("./data/2.png");
+  images[3]  = loadImage("./data/3.png"); 
+  images[4]  = loadImage("./data/4.png");
+  images[5]  = loadImage("./data/5.png");
+} 
+ 
+void draw() 
+{ 
+  int rand = random(1,20);
+  if(int(rand) == 1){
+    if( images[5].loaded ){
+      image(images[5], 0, 0);
+    }
+  }else{
+    frame = (frame+1)%numFrames;
+    if( images[frame].loaded ){
+      image(images[frame], 0, 0);
+    }
+  }
+}
+</script>
+<canvas width="200" height="200"></canvas>
+</body>
+</html>
